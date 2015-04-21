@@ -1,7 +1,8 @@
 require 'sinatra'
 
 get '/' do
-  FloatDashboard.new.projects.to_json
+  @projects = FloatDashboard.new.projects
+  erb :index
 end
 
 class FloatDashboard
