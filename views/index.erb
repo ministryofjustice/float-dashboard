@@ -15,6 +15,7 @@
       margin: 1em;
       float: left;
       background-color: #ccc;
+      width:200px;
     }
     .product h2 {
       background-color: #000;
@@ -29,15 +30,26 @@
   </style>
 </head>
 <body>
-  <% @projects.each_pair do |project, names| %>
-    <div class="product">
-      <h2><%= project %></h2>
-      <div class="people">
-        <% names.each do |name| %>
-          <p class="team_member"><%= name %></p>
-        <% end %>
+  <div class="products">
+    <% @projects.each_pair do |project, names| %>
+      <div class="product">
+        <h2><%= project %></h2>
+        <div class="people">
+          <% names.each do |name| %>
+            <p class="team_member"><%= name %></p>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="/masonry.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+  $('.products').masonry({
+    itemSelector: '.product'
+  });
+});
+</script>
 </html>
