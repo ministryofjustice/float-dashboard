@@ -11,6 +11,14 @@
       font-size: 12px;
       font-weight: normal;
     }
+    h1 {
+      font-size:3em;
+      text-align: center;
+      margin: 0.5em;
+    }
+    .products {
+      margin: 0 auto;
+    }
     .product {
       margin: 1em;
       float: left;
@@ -30,6 +38,7 @@
   </style>
 </head>
 <body>
+  <h1>Who's working on what this week?</h1>
   <div class="products">
     <% @projects.each_pair do |project, names| %>
       <div class="product">
@@ -48,7 +57,8 @@
 <script type="text/javascript">
 $( document ).ready(function() {
   $('.products').masonry({
-    itemSelector: '.product'
+    itemSelector: '.product',
+    isFitWidth: true
   });
 });
 </script>
