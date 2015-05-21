@@ -1,8 +1,12 @@
 require 'sinatra'
 
 get '/' do
-  @projects = FloatDashboard.new.projects
-  erb :index
+  if [ENV['ALLOWED_IP'], '0.0.0.0', '::1'].include? request.ip
+    @projects = FloatDashboard.new.projects
+    erb :index
+  else
+    "This is only accessible from the MOJD network #{request.ip}"
+  end
 end
 
 class FloatDashboard
